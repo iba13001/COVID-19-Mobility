@@ -1,6 +1,5 @@
 # Libraries
 library(dplyr)
-library(googleVis)
 library(shiny)
 library(shinydashboard)
 library(ggplot2)
@@ -11,6 +10,8 @@ library(maps)
 library(leaflet)
 library(htmltools)
 library(forcats)
+library(googleVis)
+#library(RSQLite)
 #library(reshape)
 
 

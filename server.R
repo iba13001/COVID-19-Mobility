@@ -10,10 +10,10 @@ shinyServer(
       gvisGeoChart(mob_selected_date(), "Province.State", input$mob.type,
                    options=list(region="US", displayMode="regions", 
                                 resolution="provinces",
-                                #colorAxis= "{colors: ['#ec7063','#eb984e','#f4d03f','#48c9b0','#3498db','#af7ac5']}",
+                                #colorAxis= "{colors: ['#ec7063','#eb984e','menuSubItem('City Trends',icon=icon('chart-bar'),tabName = 'nyc_trends')','#48c9b0','#3498db','#af7ac5']}",
                                 colorAxis= "{colors: ['#037DF3','#49F303']}",
-                                backgroundColor= '#e5e8e8',
-                                width="780px", height="420px"))
+                                backgroundColor= '#FFFFFF',
+                                width="780px", height="400px"))
       # using width="auto" and height="auto" to
       # automatically adjust the map size
     })
@@ -53,7 +53,7 @@ shinyServer(
     output$top.boxplots <- renderPlot({
       
       ggplot(top5(),aes(fct_reorder(Province.State,top.selected.mob,
-                                    ,FUN=median,na.rm=TRUE,.desc=TRUE),y=top.selected.mob))+
+                                    FUN=median,na.rm=TRUE,.desc=TRUE),y=top.selected.mob))+
         geom_boxplot()+
         ggtitle('Percentage of Change of Top 5 States')+
         xlab('')+
@@ -212,7 +212,7 @@ shinyServer(
         gvisLineChart(selected_state(),xvar='Last.Update',yvar='New.Cases',
                       options=list(chartArea= "{'width': '80%', 'height': '80%'}",
                                    legend="{position:'none'}",
-                                   bar="{groupWidth:'100%'}",
+                                   #bar="{groupWidth:'100%'}",
                                    width="580px", height="360px",
                                    hAxis="{title:'Date'}"))
 
@@ -278,13 +278,13 @@ shinyServer(
       #ny_mob_date$mob=as.numeric(ny_mob_date$mob)
     })
     
-    output$nyc.cases <- renderGvis({
+    output$nyc_cases <- renderGvis({
       
       gvisLineChart(nyc_covid,xvar='Last.Update',yvar='New.Cases',
                     options=list(chartArea= "{'width': '80%', 'height': '80%'}",
-                                 vAxes="[{title:'Daily Cases'}]",
+                                 #vAxes="[{title:'Daily Cases'}]",
                                  legend="{position:'none'}",
-                                 bar="{groupWidth:'100%'}",
+                                 #bar="{groupWidth:'100%'}",
                                  width="580px", height="360px",
                                  hAxis="{title:'Date'}"))
       

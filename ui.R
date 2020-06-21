@@ -19,8 +19,8 @@ shinyUI(
                                             state.choice))
                  ),
         menuItem('NYC',icon=icon('grin-hearts'),
-                 menuSubItem('Track Mobility',icon=icon('chart-line'),tabName = 'nyc_track_mobility'),
-                 menuSubItem('City Trends',icon=icon('chart-bar'),tabName = 'nyc_trends')
+                 menuSubItem('City Trends',icon=icon('chart-bar'),tabName = 'nyc_trends'),
+                 menuSubItem('Track Mobility',icon=icon('chart-line'),tabName = 'nyc_track_mobility')
                  )
                  
         #menuItem("Data", tabName = "data", icon = icon("database"))
@@ -42,7 +42,7 @@ shinyUI(
                                                  max = as.Date("2020-06-01","%Y-%m-%d"),
                                                  value=as.Date("2020-04-15"),
                                                  timeFormat="%Y-%m-%d")),
-                       box(htmlOutput('map'),width=NULL,height=485,
+                       box(htmlOutput('map'),width=NULL,height=470,
                              title='Percentage of Change in Mobility' )
                          
                          ),
@@ -124,7 +124,7 @@ shinyUI(
                                                   max = as.Date("2020-06-01","%Y-%m-%d"),
                                                   value=as.Date("2020-04-15"),
                                                   timeFormat="%Y-%m-%d")),
-                       fluidPage(leafletOutput('nyc_map'))
+                       fluidRow(leafletOutput('nyc_map'))
                        ),
                        # box(htmlOutput('map'),width=NULL,height=525,
                        #     title='Percentage of Change in Mobility' )
@@ -132,7 +132,7 @@ shinyUI(
         tabItem(tabName = 'nyc_trends',
                 
                 column(6,box(title='Daily Cases',background = "light-blue", solidHeader = TRUE,
-                             htmlOutput("nyc.cases"),width=80,collapsible = T)),
+                             htmlOutput("nyc_cases"),width=80,collapsible = T)),
                 column(6,box(title='Percentage of Change in Mobility',background = "light-blue", solidHeader = TRUE,
                              plotOutput("nyc.daily.mob",height="360px"),width=80,collapsible = T)),
                 
