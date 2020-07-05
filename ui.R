@@ -7,6 +7,7 @@ shinyUI(
       # sidebarUserPanel(NULL,image='https://media.kasperskydaily.com/wp-content/uploads/sites/92/2020/02/06101938/coronavirus-phishing-featured.jpg'),
       sidebarUserPanel(NULL,image='coco.jpg'),
       sidebarMenu(
+        menuItem('Need to Know!',tabName='info',icon=icon('info-circle')),
         menuItem('Nation Wide Mobility',icon=icon('map-marked'),
                  menuSubItem(tabName = 'us_mobility',selectizeInput('mob.type',
                                                                     'Select Mobility Type',
@@ -28,6 +29,69 @@ shinyUI(
     ),
     dashboardBody(
       tabItems(
+        tabItem(tabName='info',
+                column(6,
+                       box(width=12,title = "Mobility Types",
+                           HTML(paste('<b>Grocery and Pharmacy:</b> mobility trends collected from
+                         grocery stores, food warehouses, farmers markets, specialty 
+                         food shops, drug stores, and pharmacies.','',
+                                      '<b>Parks:</b> mobility trends collected from recreational places such
+                         as local parks, national parks, public beaches, marinas,
+                         dog parks, plazas, and public gardens.','',
+                                      '<b>Transit Stations:</b> mobility trends collected from
+                         public transport hubs like subway,
+                         bus, and train stations.','',
+                                      '<b>Retail:</b> mobility trends collected from restaurants, 
+                         cafes, shopping centers, theme parks, museums,
+                         libraries, and movie theaters.','',
+                                      '<b>Residential:</b> mobility trends collected from places of residence.','',
+                                      '<b>Workplace:</b> mobility trends from places of work'
+                                      ,sep="<br/>"))
+                       ),
+                       box(width=12,title='Baseline Definition',
+                           HTML('The baseline used as a reference for this data
+                         is the median value of the corresponding day
+                         of the week in the 5-week period from January
+                         3 to February 6 of 2020')
+                           ),
+                       box(width=12,title='Percentage Change in Mobility ',
+                           HTML('The percentage change in the visits and length
+                         of stay with respect to the baseline'))
+                       ),
+                column(6,
+                       box(width=12,title='Correlation Coefficients between Daily Cases and Mobiloty',
+                           HTML("It is the number that describes how people reacted 
+                          to the reported daily cases in the previous days.
+                          It takes values between -1 and 1. A negative value 
+                          indicates that as the reported daily cases increased,
+                           people's mobility decreased in the following day. 
+                          A positive value indicates that as the reported 
+                          daily cases increased, people's mobility 
+                          increased in the following day. Zero indicates
+                           that there is a weak response, and 
+                          one indicates that there is a strong response.")
+                       ),
+                       box(width=12,title='Data Sources',
+                           tagList(a('Google LLC "Google COVID-19 
+                              Community Mobility Reports"',
+                                     href="https://www.google.com/covid19/mobility/")),
+                           HTML("<br/>"),
+                           tagList(a("Johns Hopkins Daily Reports",
+                                     href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data")),
+                           HTML("<br/>"),
+                           tagList(a("New York Times COVID-19 Reports",
+                                     href="https://github.com/nytimes/covid-19-data")),
+                           HTML("<br/>"),
+                           tagList(a("Geocodes from Healthcare.gov",
+                                     href="https://data.healthcare.gov/dataset/Geocodes-USA-with-Counties/52wv-g36k"))
+                           ),
+                       box(title = "Note!", background = "maroon",
+                           "If charts do not show properly, reload the app, go to 'NYC' and click on 'City Trends'.
+                           Then view any chart of interest",
+                           width=12)
+                       )
+                    
+                ),
         tabItem(tabName = 'us_mobility',
                 
 
