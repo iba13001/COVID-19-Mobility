@@ -103,7 +103,7 @@ shinyUI(
                          box(width=NULL,sliderInput("selected.date",animate=T,
                                                  "Dates:",
                                                  min = as.Date("2020-03-01","%Y-%m-%d"),
-                                                 max = as.Date("2020-07-07","%Y-%m-%d"),
+                                                 max = as.Date("2020-07-05","%Y-%m-%d"),
                                                  value=as.Date("2020-04-15"),
                                                  timeFormat="%Y-%m-%d")),
                        box(htmlOutput('map'),width=NULL,height=470,
@@ -185,7 +185,7 @@ shinyUI(
                        box(width=8,sliderInput("selected.date2",animate=T,
                                                   "Dates:",
                                                   min = as.Date("2020-03-01","%Y-%m-%d"),
-                                                  max = as.Date("2020-07-07","%Y-%m-%d"),
+                                                  max = as.Date("2020-07-05","%Y-%m-%d"),
                                                   value=as.Date("2020-04-15"),
                                                   timeFormat="%Y-%m-%d")),
                        fluidRow(leafletOutput('nyc_map'))
