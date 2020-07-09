@@ -31,6 +31,10 @@ shinyUI(
       tabItems(
         tabItem(tabName='info',
                 column(6,
+                       box(title = "Note!", background = "maroon",
+                           "If charts do not show properly, reload the app, go to 'NYC' and click on 'City Trends'.
+                           Then view any chart of interest",
+                           width=12),
                        box(width=12,title = "Mobility Types",
                            HTML(paste('<b>Grocery and Pharmacy:</b> mobility trends collected from
                          grocery stores, food warehouses, farmers markets, specialty 
@@ -53,12 +57,12 @@ shinyUI(
                          is the median value of the corresponding day
                          of the week in the 5-week period from January
                          3 to February 6 of 2020')
-                           ),
-                       box(width=12,title='Percentage Change in Mobility ',
-                           HTML('The percentage change in the visits and length
-                         of stay with respect to the baseline'))
+                           )
                        ),
                 column(6,
+                       box(width=12,title='Percentage Change in Mobility ',
+                           HTML('The percentage change in the visits and length
+                         of stay with respect to the baseline')),
                        box(width=12,title='Correlation Coefficients between Daily Cases and Mobiloty',
                            HTML("It is the number that describes how people reacted 
                           to the reported daily cases in the previous days.
@@ -85,10 +89,6 @@ shinyUI(
                            tagList(a("Geocodes from Healthcare.gov",
                                      href="https://data.healthcare.gov/dataset/Geocodes-USA-with-Counties/52wv-g36k"))
                            ),
-                       box(title = "Note!", background = "maroon",
-                           "If charts do not show properly, reload the app, go to 'NYC' and click on 'City Trends'.
-                           Then view any chart of interest",
-                           width=12)
                        )
                     
                 ),
@@ -103,7 +103,7 @@ shinyUI(
                          box(width=NULL,sliderInput("selected.date",animate=T,
                                                  "Dates:",
                                                  min = as.Date("2020-03-01","%Y-%m-%d"),
-                                                 max = as.Date("2020-06-01","%Y-%m-%d"),
+                                                 max = as.Date("2020-07-07","%Y-%m-%d"),
                                                  value=as.Date("2020-04-15"),
                                                  timeFormat="%Y-%m-%d")),
                        box(htmlOutput('map'),width=NULL,height=470,
@@ -185,7 +185,7 @@ shinyUI(
                        box(width=8,sliderInput("selected.date2",animate=T,
                                                   "Dates:",
                                                   min = as.Date("2020-03-01","%Y-%m-%d"),
-                                                  max = as.Date("2020-06-01","%Y-%m-%d"),
+                                                  max = as.Date("2020-07-07","%Y-%m-%d"),
                                                   value=as.Date("2020-04-15"),
                                                   timeFormat="%Y-%m-%d")),
                        fluidRow(leafletOutput('nyc_map'))

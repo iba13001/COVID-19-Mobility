@@ -76,7 +76,7 @@ shinyServer(
                     Total.Deaths=sum(Deaths)) %>%
           mutate(.,New.Cases=Total.Cases-lag(Total.Cases)) %>%
           filter(.,New.Cases>=0) %>% filter(.,!Last.Update %in% as.Date(c(
-            '2020-04-22','2020-04-24','2020-04-29')))
+            '2020-04-22','2020-04-24','2020-04-29','2020-06-29','2020-07-01')))
         
       } else{
         
@@ -85,7 +85,7 @@ shinyServer(
                     Total.Deaths=sum(Deaths)) %>%
           mutate(.,New.Cases=Total.Cases-lag(Total.Cases)) %>%
           filter(.,New.Cases>=0) %>% filter(.,!Last.Update %in% as.Date(c(
-            '2020-04-22','2020-04-24','2020-04-29')))
+            '2020-04-22','2020-04-24','2020-04-29','2020-06-29','2020-07-01')))
       }
       
 
@@ -383,10 +383,12 @@ shinyServer(
     
     observeEvent(c(input$mob.type2,input$selected.date2),{
       
+      pal <- colorNumeric(c("blue", "green"), domain = c(-250:250))
       proxy <- leafletProxy('nyc_map',data=nyc_mob()) %>%
         removeShape(layerId = LETTERS[1:6]) %>% 
         addCircleMarkers(~long,~lat,
                          radius = sqrt((0.5*nyc_mob()$mob)**2),
+                         color=~pal(nyc_mob()$mob),
                          stroke = FALSE, fillOpacity = 0.7,
                          #clusterOptions = markerClusterOptions(),
                          popup = paste("<b>",nyc_mob()$county,"</b>","<br>",
